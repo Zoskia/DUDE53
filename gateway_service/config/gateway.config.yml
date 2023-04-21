@@ -4,9 +4,17 @@ admin:
   port: 9876
   host: localhost
 apiEndpoints:
-  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/apiEndpoints
+  userApi:
+    host: '*'
+    path: '/user/*'
+  dataApi:
+    host: '*'
+    path: '/data/*'
 serviceEndpoints:
-  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/serviceEndpoints
+  userService:
+    url: 'http://localhost:3001'
+  dataService:
+    url: 'http://localhost:3002'
 policies:
   - basic-auth
   - cors
@@ -17,4 +25,19 @@ policies:
   - proxy
   - rate-limit
 pipelines:
-  # see: https://www.express-gateway.io/docs/configuration/gateway.config.yml/pipelines
+  userPipeline:
+    apiEndpoints:
+      - userApi
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: userService
+              changeOrigin: true
+  dataPipeline:
+    apiEndpoints:
+      - dataApi
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: dataService
+              changeOrigin: true
