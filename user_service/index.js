@@ -31,7 +31,8 @@ app.use((req, res, next) => {
 app.use("/user", userRoutes);
 
 // Start the server
+const host = "localhost";
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log(`User Service listening on port ${port}`);
+app.listen(port, host, () => {
+  console.log(`User Service listening on ${host}:${port}`);
 });
