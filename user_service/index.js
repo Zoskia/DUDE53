@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+require("dotenv").config();
 
 // Connect to MongoDB database
-const MONGODB_URI = "mongodb://localhost:27017/user_service";
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use("/user", userRoutes);
 
 // Start the server
-const port = 3001;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`User Service listening on port ${port}`);
 });

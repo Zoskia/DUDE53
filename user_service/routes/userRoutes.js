@@ -65,8 +65,9 @@ router.post("/auth", async (req, res) => {
   
       res.status(200).json({ message: "Authentication successful.", token });
     } catch (error) {
+      console.error("Authentication error:", error);
       res.status(500).json({ message: "Error during authentication.", error });
-    }
+    }    
   });
 
 module.exports = router;
