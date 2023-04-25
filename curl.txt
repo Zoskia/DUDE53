@@ -1,0 +1,17 @@
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"userName": "testUser", "password": "testPassword"}' \
+  http://localhost:3000/user/sign-up
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"userName": "testUser", "password": "testPassword"}' \
+  http://localhost:3000/user/auth
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDQ3ZDZkOWUzYzE2MWQzNjE5YzEwOTgiLCJ1c2VyU2x1ZyI6InRlc3R1c2VyIiwiaWF0IjoxNjgyNDI5OTgxLCJleHAiOjE2ODI0MzcxODF9.dtxIhb_NXcpY0IhZ7axv68oZdT_SBjHRjnXpRLLzBV0" \
+  -d '{"name": "Name 1 von testUser", "data": "Data 1 von testUser"}' \
+  http://localhost:3000/data
+
+curl -X GET http://localhost:3000/data/user/testUser

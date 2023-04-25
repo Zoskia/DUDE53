@@ -4,6 +4,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const slugify = require("slugify");
+require('dotenv').config();
 
 // Sign-up route
 router.post("/sign-up", async (req, res) => {
@@ -60,7 +61,7 @@ router.post("/auth", async (req, res) => {
       }
   
       const token = jwt.sign({ userId: user._id, userSlug: user.userSlug }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
+        expiresIn: "2h",
       });
   
       res.status(200).json({ message: "Authentication successful.", token });

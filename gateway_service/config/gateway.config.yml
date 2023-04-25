@@ -9,7 +9,7 @@ apiEndpoints:
     path: '/user/*'
   dataApi:
     host: '*'
-    path: '/data/*'
+    path: '/data*'
 serviceEndpoints:
   userService:
     url: 'http://localhost:3001'
@@ -29,6 +29,9 @@ pipelines:
     apiEndpoints:
       - userApi
     policies:
+      - log:
+          - action:
+              message: 'User request: ${req.method} ${req.url}'
       - proxy:
           - action:
               serviceEndpoint: userService
@@ -37,6 +40,9 @@ pipelines:
     apiEndpoints:
       - dataApi
     policies:
+      - log:
+          - action:
+              message: 'Data request: ${req.method} ${req.url}'
       - proxy:
           - action:
               serviceEndpoint: dataService

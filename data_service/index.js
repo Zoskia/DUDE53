@@ -1,14 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dataRoutes = require("./routes/dataRoutes");
-const cors = require("cors");
 require("dotenv").config();
 
 // Connect to MongoDB database
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true,
 });
 
 const db = mongoose.connection;
@@ -23,7 +21,11 @@ const app = express();
 
 // Add middleware to parse JSON data and handle CORS errors
 app.use(express.json());
-app.use(cors());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
 
 // Add created routes
 app.use("/data", dataRoutes);
