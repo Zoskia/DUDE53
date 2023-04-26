@@ -59,8 +59,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// /data PUT route
-router.put("/:slug", async (req, res) => {
+// /data PATCH route
+router.patch("/:slug", async (req, res) => {
   try {
     const token = req.headers.authorization
       ? req.headers.authorization.split(" ")[1]
