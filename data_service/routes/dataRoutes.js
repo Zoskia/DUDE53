@@ -117,6 +117,75 @@ router.patch("/:slug", async (req, res) => {
   }
 });
 
+// /data PUT route
+router.put("/:slug", async (req, res) => {
+  try {
+    const token = req.headers.authorization
+      ? req.headers.authorization.split(" ")[1]
+      : null;
+
+    if (!token) {
+      return res.status(401).json({ message: "Authentication required." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err) => {
+      if (err) {
+        return res.status(401).json({ message: "Invalid token." });
+      }
+    });
+
+    const user = jwt.decode(token).userSlug;
+    const slug = req.params.slug;
+    const name = req.body.name;
+    const data = req.body.data;
+
+    if (!slug || !name || !user) {
+      return res
+        .status(400)
+        .json({ message: "Slug, name and user are required." });
+    }
+
+    const existingData = await Data.findOne({ slug });
+
+    // new data
+    if (!existingData) {
+      const newData = new Data({
+        slug,
+        name,
+        user,
+        data,
+      });
+
+      await newData.save();
+
+      return res
+        .status(201)
+        .json({ message: "Dataset created successfully.", dataset: newData });
+    }
+
+    // existing data
+    if (existingData.user !== user) {
+      return res.status(403).json({ message: "Access denied." });
+    }
+
+    existingData.name = name;
+
+    if (existingData.data !== data) {
+      existingData.data = data;
+    }
+
+    await existingData.save();
+
+    res.status(200).json({
+      message: "Dataset updated successfully.",
+      dataset: existingData,
+    });
+  } catch (error) {
+    console.log("Error:", error);
+    res.status(500).json({ message: "Error updating dataset.", error });
+  }
+});
+
 // /data/user GET route
 router.get("/user/:userSlug", async (req, res) => {
   try {
