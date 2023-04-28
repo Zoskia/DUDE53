@@ -5,16 +5,16 @@ admin:
   host: localhost
 apiEndpoints:
   userApi:
-    host: '*'
-    path: '/user/*'
+    host: "*"
+    path: "/user/*"
   dataApi:
-    host: '*'
-    path: '/data*'
+    host: "*"
+    path: "/data*"
 serviceEndpoints:
   userService:
-    url: 'http://localhost:3001'
+    url: ${SERVICE_ENDPOINT_USER}
   dataService:
-    url: 'http://localhost:3002'
+    url: ${SERVICE_ENDPOINT_DATA}
 policies:
   - basic-auth
   - cors
@@ -31,7 +31,7 @@ pipelines:
     policies:
       - log:
           - action:
-              message: 'User request: ${req.method} ${req.url}'
+              message: "User request: ${req.method} ${req.url}"
       - proxy:
           - action:
               serviceEndpoint: userService
@@ -42,7 +42,7 @@ pipelines:
     policies:
       - log:
           - action:
-              message: 'Data request: ${req.method} ${req.url}'
+              message: "Data request: ${req.method} ${req.url}"
       - proxy:
           - action:
               serviceEndpoint: dataService

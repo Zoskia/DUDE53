@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  data_service:
+    build: ./data_service
+    container_name: data_service
+    ports:
+      - '3002:3002'
+    environment:
+      - JWT_SECRET=vollGeheim!
+      - PORT=3002
+      - MONGODB_URI=mongodb://mongo:27017/dude53
+    depends_on:
+      - mongo
+
+  user_service:
+    build: ./user_service
+    container_name: user_service
+    ports:
+      - '3001:3001'
+    environment:
+      - JWT_SECRET=vollGeheim!
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:27017/dude53
+    depends_on:
+      - mongo
+
+  gateway_service:
+    build: ./gateway_service
+    container_name: gateway_service
+    ports:
+      - '3000:3000'
+      - '9876:9876'
+    environment:
+      - SERVICE_ENDPOINT_USER=http://user_service:3001
+      - SERVICE_ENDPOINT_DATA=http://data_service:3002
+    depends_on:
+      - user_service
+      - data_service
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

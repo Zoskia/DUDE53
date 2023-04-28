@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// /data PATCH route
+// /data PATCH route -> Update dataset, return error if it does not exist
 router.patch("/:slug", async (req, res) => {
   try {
     const token = req.headers.authorization
@@ -117,7 +117,7 @@ router.patch("/:slug", async (req, res) => {
   }
 });
 
-// /data PUT route
+// /data PUT route -> Update dataset or create if not found
 router.put("/:slug", async (req, res) => {
   try {
     const token = req.headers.authorization

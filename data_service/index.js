@@ -31,8 +31,7 @@ app.use((req, res, next) => {
 app.use("/data", dataRoutes);
 
 // Start the server
-const host = "localhost";
 const port = process.env.PORT || 3002;
-app.listen(port, host, () => {
-  console.log(`Data Service listening on ${host}:${port}`);
+app.listen(port, () => {
+  console.log(`Data Service listening on ${port}`);
 });
