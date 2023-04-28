@@ -10,6 +10,7 @@ services:
       - JWT_SECRET=vollGeheim!
       - PORT=3002
       - MONGODB_URI=mongodb://mongo:27017/dude53
+      - API_KEY=auchGeheim!
     depends_on:
       - mongo
 
@@ -22,6 +23,7 @@ services:
       - JWT_SECRET=vollGeheim!
       - PORT=3001
       - MONGODB_URI=mongodb://mongo:27017/dude53
+      - API_KEY=auchGeheim!
     depends_on:
       - mongo
 
@@ -34,6 +36,7 @@ services:
     environment:
       - SERVICE_ENDPOINT_USER=http://user_service:3001
       - SERVICE_ENDPOINT_DATA=http://data_service:3002
+      - API_KEY=auchGeheim!
     depends_on:
       - user_service
       - data_service

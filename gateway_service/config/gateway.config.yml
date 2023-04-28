@@ -36,6 +36,8 @@ pipelines:
           - action:
               serviceEndpoint: userService
               changeOrigin: true
+              headers:
+                x-api-key: ${API_KEY}
   dataPipeline:
     apiEndpoints:
       - dataApi
@@ -47,3 +49,5 @@ pipelines:
           - action:
               serviceEndpoint: dataService
               changeOrigin: true
+              headers:
+                x-api-key: ${API_KEY}

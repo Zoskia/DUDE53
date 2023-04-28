@@ -27,6 +27,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// Add middleware to check the API key
+app.use((req, res, next) => {
+  const apiKey = req.headers["x-api-key"];
+
+  if (!apiKey || apiKey !== process.env.API_KEY) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  next();
+});
+
 // Add created routes
 app.use("/data", dataRoutes);
 
