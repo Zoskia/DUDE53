@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dataRoutes = require("./routes/dataRoutes");
-require("dotenv").config();
+const config = require("./config");
 
 // Connect to MongoDB database
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(config.mongodbUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   const apiKey = req.headers["x-api-key"];
 
-  if (!apiKey || apiKey !== process.env.API_KEY) {
+  if (!apiKey || apiKey !== config.apiKey) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 app.use("/data", dataRoutes);
 
 // Start the server
-const port = process.env.PORT || 3002;
+const port = config.port;
 app.listen(port, () => {
   console.log(`Data Service listening on ${port}`);
 });
