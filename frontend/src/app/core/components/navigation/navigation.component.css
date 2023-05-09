@@ -1,12 +1,12 @@
 
 .nav-wrapper {
-  background-color: #f0f0f0;
-  height: 8vh;
+  background-color: #f2f4f9;
+  height: 12vh;
 }
 
 .nav-content {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 60%;
@@ -14,6 +14,11 @@
 }
 
 a {
-  padding: 0.3rem 0.8rem;
+  padding: 0.3rem 0.7rem;
   font-size: 0.7rem;
+}
+
+.nav-logo {
+  max-height: 80%;
+  margin: 0 1rem;
 }

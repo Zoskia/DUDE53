@@ -1,2 +1,7 @@
 @import '../node_modules/@picocss/pico/css/pico.css';
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #f2f4f9;
+}

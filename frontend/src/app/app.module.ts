@@ -8,11 +8,13 @@ import { NavigationComponent } from './core/components/navigation/navigation.com
 import { RouterModule } from '@angular/router';
 import { AuthComponent } from './core/components/auth/auth.component';
 import { SignInComponent } from './core/components/sign-in/sign-in.component';
+import { LayoutComponent } from './core/components/layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
