@@ -1,0 +1,19 @@
+
+.nav-wrapper {
+  background-color: #f0f0f0;
+  height: 8vh;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 60%;
+  height: 100%;
+}
+
+a {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.7rem;
+}
