@@ -12,7 +12,7 @@
     <a routerLink="/" class="nav-logo-link">
       <img src="../../../../assets/images/logo_nav.png" class="nav-logo">
     </a>
-    <ul>
+    <ul *ngIf="!isLoggedIn">
       <li>
         <small
           ><a routerLink="auth" routerLinkActive="activebutton">Login</a></small
@@ -24,6 +24,13 @@
           ><a routerLink="sign-in" routerLinkActive="activebutton"
             >Register</a
           ></small
+        >
+      </li>
+    </ul>
+    <ul *ngIf="isLoggedIn">
+      <li>
+        <small
+          ><a (click)="logout()" routerLinkActive="activebutton">Logout</a></small
         >
       </li>
     </ul>
