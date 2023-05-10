@@ -22,3 +22,22 @@ a {
   max-height: 80%;
   margin: 0 1rem;
 }
+
+a.nav-logo-link {
+  display: inline-block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.nav-logo-link:hover,
+a.nav-logo-link:active,
+a.nav-logo-link:focus {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a.nav-logo-link img {
+  height: 100%;
+}

@@ -12,9 +12,9 @@ apiEndpoints:
     path: "/data*"
 serviceEndpoints:
   userService:
-    url: ${SERVICE_ENDPOINT_USER}
+    url: "${SERVICE_ENDPOINT_USER:-http://localhost:3001}"
   dataService:
-    url: ${SERVICE_ENDPOINT_DATA}
+    url: "${SERVICE_ENDPOINT_DATA:-http://localhost:3002}"
 policies:
   - basic-auth
   - cors

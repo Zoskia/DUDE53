@@ -5,3 +5,25 @@ html, body {
   margin: 0;
   background-color: #f2f4f9;
 }
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-navigation {
+  flex-shrink: 0;
+}
+
+app-layout {
+  flex-grow: 1;
+  display: flex;
+}
+
+.layout-container {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 2rem;
+  background-color: #ffffff;
+}

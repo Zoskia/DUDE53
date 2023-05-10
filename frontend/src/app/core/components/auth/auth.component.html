@@ -1,1 +1,18 @@
-<p>auth works!</p>
+<article>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="userName">Username:</label>
+      <input type="text" id="userName" formControlName="userName" required />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        required
+      />
+    </div><br>
+    <button type="submit">Login</button>
+  </form>
+</article>

@@ -2,6 +2,7 @@
   max-width: 60%;
   margin: 0 auto;
   background-color: #ffffff;
-  height: 92vh;
+  height: 100%;
   padding: 2rem;
+  overflow: auto;
 }
