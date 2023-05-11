@@ -12,6 +12,11 @@ import { AuthComponent } from './core/components/auth/auth.component';
 import { SignInComponent } from './core/components/sign-in/sign-in.component';
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { StartupComponent } from './core/components/startup/startup.component';
+import { PostListComponent } from './shared/components/posts/post-list/post-list.component';
+import { PostDetailComponent } from './shared/components/posts/post-detail/post-detail.component';
+import { PostCreateComponent } from './shared/components/posts/post-create/post-create.component';
+import { PostEditComponent } from './shared/components/posts/post-edit/post-edit.component';
+import { PostDeleteComponent } from './shared/components/posts/post-delete/post-delete.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,11 @@ import { StartupComponent } from './core/components/startup/startup.component';
     AuthComponent,
     SignInComponent,
     StartupComponent,
+    PostListComponent,
+    PostDetailComponent,
+    PostCreateComponent,
+    PostEditComponent,
+    PostDeleteComponent,
   ],
   imports: [
     BrowserModule,
