@@ -50,6 +50,8 @@ export function tokenGetter() {
       { path: 'sign-in', component: SignInComponent },
       { path: 'post-list', component: PostListComponent },
       { path: 'post-create', component: PostCreateComponent },
+      { path: 'post-details', component: PostDetailComponent },
+      { path: 'post-edit', component: PostEditComponent },
     ]),
   ],
   providers: [],
