@@ -1,14 +1,22 @@
-<table role="grid">
+<table role="grid" class="table">
   <thead>
     <tr>
-      <th scope="col">User</th>
-      <th scope="col">Post Name</th>
+      <th scope="col" class="user">User</th>
+      <th scope="col" class="name">Post Name</th>
+      <th scope="col" class="links"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let post of postsList">
       <td>{{ post.user }}</td>
       <td>{{ post.name }}</td>
+      <td class="post_links">
+        <small>
+          <small><a  routerLink="post-detail" routerLinkActive="activebutton">Show Post</a></small>
+          |
+          <small><a  routerLink="post-edit" routerLinkActive="activebutton">Edit</a></small>
+        </small>
+      </td>
     </tr>
   </tbody>
 </table>
