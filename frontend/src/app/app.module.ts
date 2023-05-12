@@ -16,8 +16,6 @@ import { PostListComponent } from './shared/components/posts/post-list/post-list
 import { PostDetailComponent } from './shared/components/posts/post-detail/post-detail.component';
 import { PostCreateComponent } from './shared/components/posts/post-create/post-create.component';
 import { PostEditComponent } from './shared/components/posts/post-edit/post-edit.component';
-import { PostDeleteComponent } from './shared/components/posts/post-delete/post-delete.component';
-import { PostSearchComponent } from './shared/components/posts/post-search/post-search.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,8 +33,6 @@ export function tokenGetter() {
     PostDetailComponent,
     PostCreateComponent,
     PostEditComponent,
-    PostDeleteComponent,
-    PostSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +50,6 @@ export function tokenGetter() {
       { path: 'sign-in', component: SignInComponent },
       { path: 'post-list', component: PostListComponent },
       { path: 'post-create', component: PostCreateComponent },
-      { path: 'post-search', component: PostSearchComponent },
     ]),
   ],
   providers: [],
