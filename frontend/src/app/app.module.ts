@@ -17,6 +17,7 @@ import { PostDetailComponent } from './shared/components/posts/post-detail/post-
 import { PostCreateComponent } from './shared/components/posts/post-create/post-create.component';
 import { PostEditComponent } from './shared/components/posts/post-edit/post-edit.component';
 import { PostDeleteComponent } from './shared/components/posts/post-delete/post-delete.component';
+import { PostSearchComponent } from './shared/components/posts/post-search/post-search.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PostDeleteComponent } from './shared/components/posts/post-delete/post-
     PostCreateComponent,
     PostEditComponent,
     PostDeleteComponent,
+    PostSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,9 @@ import { PostDeleteComponent } from './shared/components/posts/post-delete/post-
       { path: '', component: StartupComponent },
       { path: 'auth', component: AuthComponent },
       { path: 'sign-in', component: SignInComponent },
+      { path: 'post-list', component: PostListComponent },
+      { path: 'post-create', component: PostCreateComponent },
+      { path: 'post-search', component: PostSearchComponent },
     ]),
   ],
   providers: [],

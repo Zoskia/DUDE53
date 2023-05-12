@@ -59,6 +59,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+// /data GET all route
+router.get("/all", async (req, res) => {
+  try {
+    const datasets = await Data.find();
+    res.status(200).json(datasets);
+  }
+
+  catch (error) {
+    console.log("Error:", error);
+    res.status(500).json({ message: "Error fetching datasets.", error });
+  }
+});
+
 // /data PATCH route -> Update dataset, return error if it does not exist
 router.patch("/:slug", async (req, res) => {
   try {

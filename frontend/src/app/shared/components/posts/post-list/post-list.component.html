@@ -1,1 +1,14 @@
-<p>post-list works!</p>
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Post Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of postsList">
+      <td>{{ post.user }}</td>
+      <td>{{ post.name }}</td>
+    </tr>
+  </tbody>
+</table>
