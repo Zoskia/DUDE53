@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class NavigationComponent implements OnInit {
   isLoggedIn = false;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.getIsAuthenticated().subscribe((value) => {
@@ -18,7 +19,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-    this.authService.setIsAuthenticated(false);
-    localStorage.removeItem('token');
+    this.authService.setIsAuthenticated(false, '');
+    this.router.navigate(['/auth']);
   }
 }

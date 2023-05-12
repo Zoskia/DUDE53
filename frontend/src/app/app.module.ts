@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
+
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
-
-import { RouterModule } from '@angular/router';
 import { AuthComponent } from './core/components/auth/auth.component';
 import { SignInComponent } from './core/components/sign-in/sign-in.component';
 import { LayoutComponent } from './core/components/layout/layout.component';
@@ -18,6 +18,10 @@ import { PostCreateComponent } from './shared/components/posts/post-create/post-
 import { PostEditComponent } from './shared/components/posts/post-edit/post-edit.component';
 import { PostDeleteComponent } from './shared/components/posts/post-delete/post-delete.component';
 import { PostSearchComponent } from './shared/components/posts/post-search/post-search.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -39,6 +43,11 @@ import { PostSearchComponent } from './shared/components/posts/post-search/post-
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
     RouterModule.forRoot([
       { path: '', component: StartupComponent },
       { path: 'auth', component: AuthComponent },

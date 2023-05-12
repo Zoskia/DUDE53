@@ -1,0 +1,17 @@
+input {
+  height: 6vb;
+}
+
+form {
+  font-size: 0.8rem;
+}
+
+button {
+  font-size: 0.8rem;
+  width: 20%;
+  height: 6vb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  }

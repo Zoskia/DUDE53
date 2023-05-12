@@ -32,9 +32,9 @@ export class AuthComponent {
 
     try {
       const response$ = this.http.post('http://localhost:3000/user/auth', this.signInForm.value);
-      const response = await lastValueFrom(response$);
+      const response: any = await lastValueFrom(response$);
       console.log(response);
-      this.authService.setIsAuthenticated(true);
+      this.authService.setIsAuthenticated(true, response.token);
       this.router.navigate(['']);
     } catch (error: any) {
       console.error('Error during sign up:', error);

@@ -1,1 +1,13 @@
-<p>post-create works!</p>
+<article>
+  <form [formGroup]="postCreate" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Title:</label>
+      <input type="text" id="name" formControlName="name" required />
+    </div>
+    <div>
+      <label for="data">Words and stuff:</label>
+      <textarea id="data" formControlName="data" rows="6" required></textarea>
+    </div><br>
+    <button type="submit">Send</button>
+  </form>
+</article>
